@@ -1,0 +1,79 @@
+{% extends "main/components/base.html" %}
+{% load static %}
+{% block title %}My Profile{% endblock title %}
+{% block css %}
+<style>
+html, body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+#all{
+    background-image: url("{% static 'images (27).jpeg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+p {
+    color: white;
+}
+</style>
+{% endblock css %}
+{% block content %}
+<div class="container" style="background-color: rgb(62, 61, 61); width: 60%; height: 100%;">
+    <div class="row me-1">
+        <div class="col-3 me-3">
+            <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="img-fluid" style="max-width: 100%; max-height: 100%; margin: 10px;">
+        </div>        
+        <div class="col">
+            <p>Name: {{profile.name}}</p>
+            <p>Birth Date: {{profile.birth_date}}</p>
+            <p>Address: {{profile.address}}</p>
+            <p>email: {{profile.email}}</p>
+            <p>phone number: {{profile.phone}}</p>
+        </div>
+    </div>
+    {%if education%}
+    <div class="card" style="background-color:  rgb(62, 61, 61);">
+        <div class="card-header">
+            <h5 class="text-center" style="color: white;">Education</h5>
+        </div>
+        <div class="card-body">
+            {%for edu in education%}
+                <p>{{edu}}</p>
+            {%endfor%}
+        </div>
+    </div>
+    {%endif%}
+    {%if experience%}
+    <div>
+        <div class="card" style="background-color:  rgb(62, 61, 61);">
+            <div class="card-header">
+                <h5 class="text-center" style="color: white;">Experience</h5>
+            </div>
+            <div class="card-body">
+                {%for exp in experience%}
+                    <p>{{exp}}</p>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    {%endif%}
+    <div class="container">
+        <h5 class="text-center card-header" style="color: white;">Projects</h5>
+        {%if projects%}
+        {%for project in projects%}
+            <div class="card" style="background-color:  rgb(62, 61, 61);">
+                <div class="card-header">
+                    <h5 class="text" style="color: white;">{{project.name}}</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{project.description}}</p>
+                    <a href="{{project.link}}" target="_blank">GitHub repository</a>
+                </div>
+            </div>
+        {%endfor%}
+        {%endif%}
+    </div>
+</div>
+{% endblock content %}
