@@ -65,11 +65,13 @@ p {
         {%for project in projects%}
             <div class="card" style="background-color:  rgb(62, 61, 61);">
                 <div class="card-header">
-                    <h5 class="text" style="color: white;">{{project.name}}</h5>
+                    <h5 class="text" style="color: white;">{{project.title}}</h5>
                 </div>
                 <div class="card-body">
                     <p>{{project.description}}</p>
+                    {%if project.link%}
                     <a href="{{project.link}}" target="_blank">GitHub repository</a>
+                    {%endif%}
                 </div>
             </div>
         {%endfor%}

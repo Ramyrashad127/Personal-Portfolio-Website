@@ -178,5 +178,6 @@ def view_profile(request):
     profile = get_object_or_404(Profile, user=user)
     projects = Project.objects.filter(profile=profile)
     education = profile.education.split('\n') if profile.education else []
+    experience = profile.experience.split('\n') if profile.experience else []
     
-    return render(request, 'main/profile.html', {'profile': profile, 'projects': projects, 'education': education})
+    return render(request, 'main/profile.html', {'profile': profile, 'projects': projects, 'education': education, 'experience': experience})

@@ -57,9 +57,9 @@ class ProfileForm(forms.ModelForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['name', 'description', 'technology', 'link']
+        fields = ['title', 'description', 'technology', 'link']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Enter Project Name',}),
+            'title': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Enter Project Name',}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter Project Description'}),
             'technology': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter Technology Used'}),
             'link': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Enter GitHub Link', 'required': False}),

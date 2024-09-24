@@ -18,10 +18,10 @@ class Profile(models.Model):
 
 class Project(models.Model):
     profile = models.ForeignKey(Profile, related_name='projects', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
     description = models.TextField()
     technology = models.TextField()
-    link = models.URLField()
+    link = models.URLField(blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
